@@ -1,0 +1,4 @@
+
+<div class="row">
+  <a href="/buffers/<%= @buffer.name %>"><%= @buffer.name %></a>
+</div>

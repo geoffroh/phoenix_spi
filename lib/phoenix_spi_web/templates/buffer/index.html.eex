@@ -1,0 +1,6 @@
+<div class="jumbotron">
+  <div class="row">
+    <a href="/buffers/new" class="btn btn-primary">New Buffer</a>
+  </div>
+  <%= Enum.map(@buffers, fn buffer -> render(PhoenixSpiWeb.BufferView, "buffer.html", buffer: buffer) end) %>
+</div>

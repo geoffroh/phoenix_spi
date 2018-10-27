@@ -1,0 +1,17 @@
+/* This file is for your main application css. */
+
+* {
+  font-size: 18px !important;
+}
+
+body {
+  margin: 0px !important;
+}
+
+#currentBuffer {
+  padding: 16px;
+  margin: 0;
+  font-size: 28px;
+  min-height: 600px;
+  border: 2px solid #666;
+}
