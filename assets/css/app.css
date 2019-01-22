@@ -11,7 +11,20 @@ body {
 #currentBuffer {
   padding: 16px;
   margin: 0;
-  font-size: 28px;
+  font-size: 32px !important;
   min-height: 600px;
   border: 2px solid #666;
+  background: #333;
+  color: white;
+}
+#links {
+  margin-top: 16px;
+}
+#links > div {
+  margin: auto;
+}
+#log {
+  font-size: 16px !important;
+  max-height: 600px;
+  overflow-y: scroll;
 }

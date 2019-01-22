@@ -4,17 +4,17 @@ defmodule PhoenixSpi.Buffer do
 
   schema "buffers" do
     field :name, :string
+    field :content, :string
 
     timestamps()
   end
 
   @required_fields ~w()
-  @optional_fields ~w(name)
+  @optional_fields ~w(name content)
 
   @doc false
-  def changeset(buffer, attrs) do
-    buffer
-    |> Map.merge(%{name: Ecto.UUID.generate})
-    |> cast(attrs, @required_fields, @optional_fields)
+  def changeset(model, attrs) do
+    model
+    |> cast(attrs, @optional_fields, @required_fields)
   end
 end

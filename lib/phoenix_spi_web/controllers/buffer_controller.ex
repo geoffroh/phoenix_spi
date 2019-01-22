@@ -3,12 +3,11 @@ defmodule PhoenixSpiWeb.BufferController do
 
   def index(conn, _params) do
     buffers = PhoenixSpi.Buffer |> PhoenixSpi.Repo.all
-    |> IO.inspect
     render(conn, "index.html", buffers: buffers)
   end
 
   def new(conn, params) do
-    changeset = PhoenixSpi.Buffer.changeset(%PhoenixSpi.Buffer{}, params)
+    changeset = PhoenixSpi.Buffer.changeset(%PhoenixSpi.Buffer{}, %{name: Ecto.UUID.generate})
 
     {:ok, buffer} = PhoenixSpi.Repo.insert(changeset)
 

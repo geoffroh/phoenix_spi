@@ -5,19 +5,13 @@ defmodule PhoenixSpi.Application do
   # for more information on OTP Applications
   def start(_type, _args) do
     import Supervisor.Spec
-
-    # Define workers and child supervisors to be supervised
     children = [
-      # Start the Ecto repository
       supervisor(PhoenixSpi.Repo, []),
-      # Start the endpoint when the application starts
       supervisor(PhoenixSpiWeb.Endpoint, []),
-      # Start your own worker by calling: PhoenixSpi.Worker.start_link(arg1, arg2, arg3)
-      # worker(PhoenixSpi.Worker, [arg1, arg2, arg3]),
+      worker(PhoenixSpi.Executable, ["/Applications/SonicPi.app/app/server/native/ruby/bin/ruby", "/Applications/SonicPi.app/app/server/ruby/bin/sonic-pi-server.rb"], id: :sonic_pi_server),
+      worker(PhoenixSpi.Executable, ["/usr/local/bin/oscdump", "osc.udp://:4558"], id: :sonic_pi_log),
     ]
 
-    # See https://hexdocs.pm/elixir/Supervisor.html
-    # for other strategies and supported options
     opts = [strategy: :one_for_one, name: PhoenixSpi.Supervisor]
     Supervisor.start_link(children, opts)
   end
